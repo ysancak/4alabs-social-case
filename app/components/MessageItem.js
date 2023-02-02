@@ -3,9 +3,9 @@ import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 
 import { sizes } from '../utils';
 
-export default function MessageItem({ data }) {
+export default function MessageItem({ data, onPress }) {
   return (
-    <TouchableOpacity activeOpacity={0.9}>
+    <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
     <View style={styles.container}>
         <View style={styles.avatarContainerView}>
             <Image source={{ uri: data.user.avatar }} style={styles.avatarImageView} />

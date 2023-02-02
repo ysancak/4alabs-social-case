@@ -4,11 +4,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { colors } from '../utils';
 
-export default function SplashButton({ text }) {
+export default function SplashButton({ text, onPress }) {
   return (
     <View style={styles.buttonBorderEffectView}>
         <View style={styles.buttonBgEffectView}>
-            <TouchableOpacity activeOpacity={0.9} style={styles.buttonTouchableOpacity}>
+            <TouchableOpacity activeOpacity={0.9} style={styles.buttonTouchableOpacity} onPress={onPress}>
                 <Text>{text}</Text>
                 <Icon name='arrow-forward-outline' size={20} />
             </TouchableOpacity>
