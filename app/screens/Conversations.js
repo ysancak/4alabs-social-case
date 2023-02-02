@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, Dimensions, Image, KeyboardAvoidingView, SafeAreaView, View, TextInput, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MessageItem from '../components/MessageItem';
@@ -12,7 +12,18 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function Conversations({ navigation }) {
 
+  const [conversationList, setConversationList] = useState(conversations)
   const [searchText, setSearchText] = useState('');
+
+  useEffect(() => {
+    let list = searchText.trim().length > 0 ? filteredConversation() : conversations;
+    setConversationList(list)
+    console.log(searchText)
+  }, [searchText])
+
+  const filteredConversation = () => {
+    return conversations.filter(conv => conv.user.name.toLowerCase().includes(searchText.trim().toLowerCase()))
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,19 +53,25 @@ export default function Conversations({ navigation }) {
           placeholder="Search for contacts"
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
-          clearButtonMode='while-editing'
-          clearTextOnFocus
+          clearButtonMode='always'
         />
       </View>
 
       <ScrollView keyboardDismissMode='on-drag' contentContainerStyle={styles.conversationView}>
-        {conversations.map((item, index) => {
+      {
+        conversationList.map((item, index) => {
           return <MessageItem 
             key={`conversation-${index}`}
             data={item}
+            onPress={() => navigation.navigate("Messaging")}
           />
-        })}
+        })
+      }
       </ScrollView>
+
+      <TouchableOpacity activeOpacity={0.9} style={styles.createNewButtonView} onPress={() => navigation.navigate("Messaging")}>
+        <Icon name='send-outline' size={25} color={colors.white} />
+      </TouchableOpacity>
 
     </KeyboardAvoidingView>
     </SafeAreaView>
@@ -110,5 +127,15 @@ const styles = StyleSheet.create({
   },
   conversationView: {
     paddingBottom: 25,
+  },
+  createNewButtonView: {
+    position: 'absolute', 
+    bottom: 0, 
+    alignSelf: 'center', 
+    margin: 35, 
+    backgroundColor: colors.black, 
+    padding: 20, 
+    borderRadius: 24,
+    transform: [{rotate: '-45deg'}],
   }
 });
