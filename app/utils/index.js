@@ -7,7 +7,8 @@ export const colors = {
     "lightGray": "#C4C4C4",
     "pink": "#F5C8C6",
     "accentLines": "#EEF2E2",
-    "navigationActiveColor": "#7DB9B3"
+    "navigationActiveColor": "#7DB9B3",
+    "gradientAccent": ["#FFE1E0", "#E1F6F4"]
 }
 
 export const sizes = {
@@ -19,7 +20,8 @@ export const sizes = {
     "captions": 12.8,
     "button": 16,
     "buttonLarge": 20,
-    "bodySmall": 14
+    "bodySmall": 14,
+    "containerPadding": 16
 }
 
 export const strings = {
