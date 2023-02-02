@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, Image, View } from 'react-native';
+import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 
 import { sizes } from '../utils';
 
 export default function MessageItem({ data }) {
   return (
+    <TouchableOpacity activeOpacity={0.9}>
     <View style={styles.container}>
         <View style={styles.avatarContainerView}>
             <Image source={{ uri: data.user.avatar }} style={styles.avatarImageView} />
@@ -14,6 +15,7 @@ export default function MessageItem({ data }) {
             <Text numberOfLines={2} style={styles.userMessageText}>{data.lastMessage}</Text>
         </View>
     </View>
+    </TouchableOpacity>
   )
 }
 
