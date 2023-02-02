@@ -37,7 +37,6 @@ export default function Tabbar({ state, descriptors, navigation }) {
                 activeOpacity={0.9}
                 onPress={onPress}
                 style={styles.buttonView}
-                
               >
                 {children}
               </TouchableOpacity>
@@ -51,7 +50,7 @@ export default function Tabbar({ state, descriptors, navigation }) {
                   <Icon name='home-outline' size={30} color={isFocused ? colors.navigationActiveColor : colors.black} />
                 </ButtonView>
               );
-            case "Messaging":
+            case "Conversations":
               return (
                 <ButtonView key={`tabbar-${index}`}>
                   <Icon name='chatbox-outline' size={30} color={isFocused ? colors.navigationActiveColor : colors.black} />
@@ -83,8 +82,6 @@ export default function Tabbar({ state, descriptors, navigation }) {
                 </ButtonView>
               )
           }
-  
-  
         })}
       </View>
     );
@@ -93,43 +90,45 @@ export default function Tabbar({ state, descriptors, navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row', 
-        height: 65, 
-        backgroundColor: colors.white, 
-        borderTopRightRadius: 20, 
-        borderTopLeftRadius: 20,
-        shadowColor: colors.black,
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 12,
-        elevation: 4,
+      flexDirection: 'row', 
+      height: 65, 
+      backgroundColor: colors.white, 
+      borderTopRightRadius: 20, 
+      borderTopLeftRadius: 20,
+      shadowColor: colors.black,
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.1,
+      shadowRadius: 12,
+      elevation: 4,
     },
     buttonView: {
-        flex: 1, justifyContent: 'center', alignItems: 'center'
+      flex: 1, 
+      justifyContent: 'center', 
+      alignItems: 'center'
     },
     centerButtonView: {
-        width: 65, 
-        height: 65, 
-        backgroundColor: colors.black, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        borderRadius: 25,
-        transform: [{rotate: '-45deg'}],
-        top: -25,
-        shadowColor: colors.black,
-        shadowOffset: {
-            width: -5,
-            height: 6,
-        },
-        shadowOpacity: 0.35,
-        shadowRadius: 12,
-        elevation: 4,
+      width: 65, 
+      height: 65, 
+      backgroundColor: colors.black, 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      borderRadius: 25,
+      transform: [{rotate: '-45deg'}],
+      top: -25,
+      shadowColor: colors.black,
+      shadowOffset: {
+        width: -5,
+        height: 6,
+      },
+      shadowOpacity: 0.35,
+      shadowRadius: 12,
+      elevation: 4,
     },
     centerButtonIcon: {
-        transform: [{rotate: '-45deg'}],
+      transform: [{rotate: '-45deg'}],
     }
   });
   
