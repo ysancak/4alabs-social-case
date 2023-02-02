@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 import SnapCarousel from '../components/SnapCarousel';
 
-import { sizes } from '../utils';
+import { sizes, strings } from '../utils';
 import SplashButton from '../components/SplashButton';
 
 const windowWidth = Dimensions.get('window').width;
@@ -19,8 +19,8 @@ export default function Splash() {
       />
 
       <View style={styles.welcomeTextView}>
-        <Text style={styles.welcomeText}>Welcome to</Text>
-        <Text style={styles.appNameText}>Socially</Text>
+        <Text style={styles.welcomeText}>{strings.welcomeTo}</Text>
+        <Text style={styles.appNameText}>{strings.appName}</Text>
       </View>
 
       <View style={styles.galleryView}>
