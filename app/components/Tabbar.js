@@ -34,8 +34,10 @@ export default function Tabbar({ state, descriptors, navigation }) {
           const ButtonView = ({children}) => {
             return (
               <TouchableOpacity
+                activeOpacity={0.9}
                 onPress={onPress}
                 style={styles.buttonView}
+                
               >
                 {children}
               </TouchableOpacity>
@@ -45,31 +47,31 @@ export default function Tabbar({ state, descriptors, navigation }) {
           switch (label) {
             case "Home":
               return (
-                <ButtonView>
+                <ButtonView key={`tabbar-${index}`}>
                   <Icon name='home-outline' size={30} color={isFocused ? colors.navigationActiveColor : colors.black} />
                 </ButtonView>
               );
             case "Messaging":
               return (
-                <ButtonView>
+                <ButtonView key={`tabbar-${index}`}>
                   <Icon name='chatbox-outline' size={30} color={isFocused ? colors.navigationActiveColor : colors.black} />
                 </ButtonView>
               );
             case "Likes":
               return (
-                <ButtonView>
+                <ButtonView key={`tabbar-${index}`}>
                   <Icon name='heart-outline' size={30} color={isFocused ? colors.navigationActiveColor : colors.black} />
                 </ButtonView>
               );
             case "Profile":
               return (
-                <ButtonView>
+                <ButtonView key={`tabbar-${index}`}>
                   <Icon name='person-circle-outline' size={30} color={isFocused ? colors.navigationActiveColor : colors.black} />
                 </ButtonView>
               );
             case "Add":
               return (
-                <ButtonView>
+                <ButtonView key={`tabbar-${index}`}>
                   <View style={styles.centerButtonView}>
                     <Icon 
                         name='add-circle-outline'
