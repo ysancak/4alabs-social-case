@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, Image, StyleSheet, Text, View, Dimensions } from 'react-native';
+
 import SnapCarousel from '../components/SnapCarousel';
+import SplashButton from '../components/SplashButton';
 
 import { sizes, strings } from '../utils';
-import SplashButton from '../components/SplashButton';
+import { splashBg, splashGallery } from '../core';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -12,9 +14,10 @@ export default function Splash() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style="auto" />
 
       <Image 
-        source={require('../../assets/splash/bg.png')} 
+        source={splashBg} 
         style={styles.bgEffectView} 
       />
 
@@ -25,20 +28,16 @@ export default function Splash() {
 
       <View style={styles.galleryView}>
         <SnapCarousel 
-          gallery={[
-            require('../../assets/splash/hero.png'),
-            require('../../assets/splash/hero-2.png')
-          ]}
+          gallery={splashGallery}
         />
       </View>
 
       <View style={styles.buttonView}>
           <SplashButton 
-            text="Next"
+            text={strings.next}
           />
       </View>
-
-      <StatusBar style="auto" />
+      
     </SafeAreaView>
   );
 }
