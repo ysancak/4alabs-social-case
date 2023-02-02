@@ -10,7 +10,7 @@ import { splashBg, splashGallery } from '../core';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function Splash() {
+export default function Splash({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,6 +35,7 @@ export default function Splash() {
       <View style={styles.buttonView}>
           <SplashButton 
             text={strings.next}
+            onPress={() => navigation.navigate("TabNavigation")}
           />
       </View>
       

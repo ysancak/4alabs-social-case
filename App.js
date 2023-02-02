@@ -7,6 +7,7 @@ import Tabbar from './app/components/Tabbar'
 import Splash from './app/screens/Splash'
 import Home from './app/screens/Home'
 import Conversations from './app/screens/Conversations'
+import Messaging from './app/screens/Messaging';
 import Add from './app/screens/Add'
 import Likes from './app/screens/Likes'
 import Profile from './app/screens/Profile'
@@ -29,10 +30,11 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-    <Stack.Navigator tabBar={props => <Tabbar {...props} />}  screenOptions={{ headerShown: false }} initialRouteName="TabNavigation">
+    <Stack.Navigator tabBar={props => <Tabbar {...props} />}  screenOptions={{ headerShown: false }} initialRouteName="Splash">
       <Stack.Screen name="Splash" component={Splash} options={{  }} />
       <Stack.Screen name="TabNavigation" component={TabNavigation} options={{  }} />
       <Stack.Screen name="Conversations_Stack" component={Conversations} options={{  }} />
+      <Stack.Screen name="Messaging" component={Messaging} options={{  }} />
     </Stack.Navigator>
     </NavigationContainer>
   );
