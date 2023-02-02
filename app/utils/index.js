@@ -7,6 +7,7 @@ export const colors = {
     "lightGray": "#C4C4C4",
     "pink": "#F5C8C6",
     "accentLines": "#EEF2E2",
+    "navigationActiveColor": "#7DB9B3"
 }
 
 export const sizes = {
