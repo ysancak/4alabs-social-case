@@ -9,6 +9,7 @@ export default function Tabbar({ state, descriptors, navigation }) {
     return (
       <View style={styles.container}>
         {state.routes.map((route, index) => {
+
           const { options } = descriptors[route.key];
           const label =
             options.tabBarLabel !== undefined
@@ -27,7 +28,7 @@ export default function Tabbar({ state, descriptors, navigation }) {
             });
   
             if (!isFocused && !event.defaultPrevented) {
-              navigation.navigate({ name: route.name, merge: true });
+              navigation.navigate({ name: route.params?.stack ? `${route.params?.stack}` : route.name, merge: true });
             }
           };
   
