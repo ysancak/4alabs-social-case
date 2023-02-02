@@ -1,12 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, Image, StyleSheet, Text, View, Dimensions } from 'react-native';
+import SnapCarousel from '../components/SnapCarousel';
+
+import { sizes } from '../utils';
+import SplashButton from '../components/SplashButton';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default function Splash() {
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.welcomeText}>
-        <Text>Welcome to</Text>
+
+      <Image 
+        source={require('../../assets/splash/bg.png')} 
+        style={styles.bgEffectView} 
+      />
+
+      <View style={styles.welcomeTextView}>
+        <Text style={styles.welcomeText}>Welcome to</Text>
         <Text style={styles.appNameText}>Socially</Text>
+      </View>
+
+      <View style={styles.galleryView}>
+        <SnapCarousel 
+          gallery={[
+            require('../../assets/splash/hero.png'),
+            require('../../assets/splash/hero-2.png')
+          ]}
+        />
+      </View>
+
+      <View style={styles.buttonView}>
+          <SplashButton 
+            text="Next"
+          />
       </View>
 
       <StatusBar style="auto" />
@@ -19,4 +48,34 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  bgEffectView: {
+    position: 'absolute',
+    width: windowHeight,
+    height: windowHeight,
+    top: -200,
+    left: -(windowWidth/1.6)
+  },  
+  welcomeTextView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  welcomeText: {
+    fontSize: sizes.body
+  },
+  appNameText: {
+    fontSize: sizes.title,
+    fontWeight: 'bold'
+  }, 
+  galleryView: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
+  },
+
 });
