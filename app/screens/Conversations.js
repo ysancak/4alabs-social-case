@@ -10,13 +10,13 @@ import { colors, sizes } from '../utils';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function Conversations() {
+export default function Conversations({ navigation }) {
 
   const [searchText, setSearchText] = useState('');
 
   return (
     <SafeAreaView style={styles.container}>
-    <KeyboardAvoidingView behavior="padding">
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
       <StatusBar style="auto" />
 
       <Image 
@@ -25,7 +25,7 @@ export default function Conversations() {
       />
 
       <View style={styles.headerView}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name='arrow-back-outline' size={25} />
         </TouchableOpacity>
         <TouchableOpacity>
@@ -47,7 +47,7 @@ export default function Conversations() {
         />
       </View>
 
-      <ScrollView keyboardDismissMode='on-drag'>
+      <ScrollView keyboardDismissMode='on-drag' contentContainerStyle={styles.conversationView}>
         {conversations.map((item, index) => {
           return <MessageItem 
             key={`conversation-${index}`}
@@ -107,5 +107,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     marginVertical: 10,
     borderRadius: 16
+  },
+  conversationView: {
+    paddingBottom: 25,
   }
 });
