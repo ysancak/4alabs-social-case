@@ -8,7 +8,7 @@ export default function SplashButton({ text }) {
   return (
     <View style={styles.buttonBorderEffectView}>
         <View style={styles.buttonBgEffectView}>
-            <TouchableOpacity style={styles.buttonTouchableOpacity}>
+            <TouchableOpacity activeOpacity={0.9} style={styles.buttonTouchableOpacity}>
                 <Text>{text}</Text>
                 <Icon name='arrow-forward-outline' size={20} />
             </TouchableOpacity>
