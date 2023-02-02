@@ -1,4 +1,6 @@
-export const splashBg = require('../../assets/splash/bg.png');
+export const splashBg = require('../../assets/bg/bg-splash.png');
+export const homeBg = require('../../assets/bg/bg-home.png');
+export const conversationBg = require('../../assets/bg/bg-conversation.png');
 
 export const splashGallery = [
     require('../../assets/splash/hero.png'),
@@ -40,4 +42,19 @@ export const feeds = [
     }
 ]
 
-export const homeBg = require('../../assets/home.png');
+export const conversations = [
+    {
+        user: {
+            name: 'John Doe',
+            avatar: 'https://i.pravatar.cc/200?img=22'
+        },
+        lastMessage: 'when an unknown printer took a galley of type'
+    },
+    {
+        user: {
+            name: 'Dennis Reynolds',
+            avatar: 'https://i.pravatar.cc/200?img=25'
+        },
+        lastMessage: 'Where can I get some?'
+    }
+]
