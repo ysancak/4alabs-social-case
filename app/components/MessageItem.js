@@ -1,46 +1,27 @@
 import React from 'react'
-import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-import { sizes } from '../utils';
-import AvatarView from './AvatarView';
+import { colors, sizes } from '../utils';
 
-export default function MessageItem({ data, onPress }) {
+export default function MessageItem({ isAuth, message }) {
   return (
-    <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
-    <View style={styles.container}>
-        <AvatarView 
-            borderWidth={1}
-            url={data.user.avatar}
-        />
-        <View style={styles.messageView}> 
-            <Text style={styles.userNameText}>{data.user.name}</Text>
-            <Text numberOfLines={2} style={styles.userMessageText}>{data.lastMessage}</Text>
-        </View>
+    <View style={{...styles.container, borderTopLeftRadius: isAuth ? 20 : 0, borderTopRightRadius: isAuth ? 0 : 20, alignSelf: isAuth ? 'flex-end' : 'flex-start' }}>
+        <Text style={styles.messageText}>{message}</Text>
     </View>
-    </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row', 
-        alignItems: 'flex-start',
+        backgroundColor: colors.lightGray2, 
         marginHorizontal: sizes.containerPadding, 
-        marginBottom: 16, 
-        backgroundColor: '#FFFFFF99', 
-        padding: 16, 
-        borderRadius: 22
+        maxWidth: '80%', 
+        marginBottom: 10,
+        padding: 18,
+        borderRadius: 20
     },
-    messageView: {
-        marginTop: 5,
-        flex: 1,
-        marginLeft: 12
-    },
-    userNameText: {
-        marginBottom: 8, 
-        fontSize: sizes.body
-    },
-    userMessageText: {
-        opacity: 0.5,
+    messageText: {
+        fontSize: sizes.body, 
+        opacity: 0.6
     }
 });

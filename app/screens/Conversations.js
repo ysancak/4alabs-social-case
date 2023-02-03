@@ -1,8 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity, Dimensions, Image, KeyboardAvoidingView, SafeAreaView, View, TextInput, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MessageItem from '../components/MessageItem';
+
+import ConversationItem from '../components/ConversationItem';
 
 import { conversationBg, conversations } from '../core';
 import { colors, sizes } from '../utils';
@@ -18,7 +19,6 @@ export default function Conversations({ navigation }) {
   useEffect(() => {
     let list = searchText.trim().length > 0 ? filteredConversation() : conversations;
     setConversationList(list)
-    console.log(searchText)
   }, [searchText])
 
   const filteredConversation = () => {
@@ -60,7 +60,7 @@ export default function Conversations({ navigation }) {
       <ScrollView keyboardDismissMode='on-drag' contentContainerStyle={styles.conversationView}>
       {
         conversationList.map((item, index) => {
-          return <MessageItem 
+          return <ConversationItem 
             key={`conversation-${index}`}
             data={item}
             onPress={() => navigation.navigate("Messaging")}
