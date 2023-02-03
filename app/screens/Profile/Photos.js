@@ -12,7 +12,6 @@ export default function Photos() {
   const getImageWH = (width, height) => {
     const ratio = Math.min((width / height), 1.5);
     const w = (windowWidth / 2) - (20);
-    console.log({ ratio, w, width, height })
     if(ratio == 1) {
       return w
     } else {
