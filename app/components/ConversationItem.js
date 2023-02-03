@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-import { sizes } from '../utils';
 import AvatarView from './AvatarView';
+import { sizes } from '../utils';
 
 export default function ConversationItem({ data, onPress }) {
   return (

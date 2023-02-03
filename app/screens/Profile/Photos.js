@@ -1,14 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ScrollView, FlatList, Image, Dimensions, Text, View } from 'react-native';
+import { StyleSheet, ScrollView, Image, Dimensions } from 'react-native';
 import MasonryList from '@react-native-seoul/masonry-list';
-
-import { userPhotos } from '../../core';
-import { sizes } from '../../utils';
+import { useSelector } from 'react-redux'
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 export default function Photos() {
+
+  const authState = useSelector((state) => state.auth)
 
   const getImageWH = (width, height) => {
     const ratio = Math.min((width / height), 1.5);
@@ -26,7 +25,7 @@ export default function Photos() {
       <StatusBar style="auto" />
 
       <MasonryList
-        data={userPhotos}
+        data={authState.images}
         keyExtractor={(item, index) => `image-${index}`}
         numColumns={2}
         showsVerticalScrollIndicator={false}

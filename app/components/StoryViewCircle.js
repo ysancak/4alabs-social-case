@@ -1,12 +1,12 @@
 import React from 'react'
-import { ImageBackground, StyleSheet, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+
 import { colors } from '../utils';
 
-export default function StoryViewButton({ image }) {
+export default function StoryViewButton({ data }) {
   return (
     <TouchableOpacity activeOpacity={0.9}>
-      <ImageBackground source={{ uri: image }} style={{ width: 56, height: 56, marginRight: 16 }} imageStyle={styles.container} />
+      <ImageBackground source={{ uri: data.avatar }} style={{ width: 56, height: 56, marginRight: 16 }} imageStyle={styles.container} />
     </TouchableOpacity>
   )
 }

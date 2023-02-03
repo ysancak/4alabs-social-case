@@ -1,7 +1,8 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import { colors } from '../utils';
 
 export default function NewStoryButton() {

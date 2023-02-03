@@ -5,10 +5,15 @@ import SnapCarousel from '../components/SnapCarousel';
 import SplashButton from '../components/SplashButton';
 
 import { sizes, strings } from '../utils';
-import { splashBg, splashGallery } from '../core';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+
+const BG = require('../../assets/bg/bg-splash.png')
+const GALLERY = [
+  require('../../assets/splash/hero.png'),
+  require('../../assets/splash/hero-2.png')
+]
 
 export default function Splash({ navigation }) {
 
@@ -17,7 +22,7 @@ export default function Splash({ navigation }) {
       <StatusBar style="auto" />
 
       <Image 
-        source={splashBg} 
+        source={BG} 
         style={styles.bgEffectView} 
       />
 
@@ -28,7 +33,7 @@ export default function Splash({ navigation }) {
 
       <View style={styles.galleryView}>
         <SnapCarousel 
-          gallery={splashGallery}
+          gallery={GALLERY}
         />
       </View>
 

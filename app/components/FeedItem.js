@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, Image, ImageBackground, View, TouchableOpacity } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { colors, sizes } from '../utils';
-import nFormatter from '../helpers/nFormatter';
 import moment from 'moment';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import nFormatter from '../helpers/nFormatter';
+import { colors, sizes } from '../utils';
 
 export default function FeedItem({ data }) {
   return (

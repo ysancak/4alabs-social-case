@@ -1,26 +1,28 @@
-import { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, ScrollView, Image, KeyboardAvoidingView, TouchableOpacity, View, SafeAreaView, TextInput } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, ScrollView, StatusBar, Image, KeyboardAvoidingView, TouchableOpacity, View, SafeAreaView, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useSelector, useDispatch } from 'react-redux'
 
 import AvatarView from '../components/AvatarView';
 import MessageItem from '../components/MessageItem';
 
+import { sendMessage } from '../store/messageSlice'
 import { colors, sizes } from '../utils';
-import {messageDetail, userProfile} from '../core';
 
-export default function Messaging({ navigation }) {
-  
+export default function Messaging({ route, navigation }) {
+
+  const dispatch = useDispatch()
+  const messageState = useSelector((state) => state.message)
+  const authState = useSelector((state) => state.auth)
   const [messageText, setMessageText] = useState('');
-  const [messageList, setMessageList] = useState(messageDetail.messages)
 
-  const sendMessage = () => {
+  const sendMessageOnHandler = () => {
     if(messageText.trim().length > 0) {
-      messageList.push({
+      dispatch(sendMessage({
         senderId: 1,
         message: messageText,
         time: new Date().getTime()
-      })
+      }))
       setMessageText('');
     }
   }
@@ -45,21 +47,21 @@ export default function Messaging({ navigation }) {
           <AvatarView 
             borderWidth={1}
             size={70}
-            url={messageDetail.user.avatar}
+            url={route.params.user.avatar}
           />
           <View style={styles.userInfoTextView}>
-            <Text style={styles.userInfoNameText}>{messageDetail.user.name}</Text>
-            <Text>{messageDetail.user.status}</Text>
+            <Text style={styles.userInfoNameText}>{route.params.user.name}</Text>
+            <Text>{route.params.status}</Text>
           </View>
         </View>
 
       </View>
       
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 120, paddingTop: 20 }}>
-        {messageDetail.messages.sort((a, b) => a.time > b.time).map((item, index) => {
+        {messageState.messages.map((item, index) => {
           return <MessageItem 
             key={`message-${index}`}
-            isAuth={item.senderId === userProfile.id}
+            isAuth={item.senderId === authState.id}
             message={item.message}
           />
         })}
@@ -72,7 +74,7 @@ export default function Messaging({ navigation }) {
           value={messageText}
           onChangeText={(text) => setMessageText(text)}
         />
-        <TouchableOpacity activeOpacity={0.9} style={styles.sendMessageButtonView} onPress={sendMessage}>
+        <TouchableOpacity activeOpacity={0.9} style={styles.sendMessageButtonView} onPress={sendMessageOnHandler}>
           <Icon name='send-outline' size={25} color={colors.white} />
         </TouchableOpacity>
       </View> 

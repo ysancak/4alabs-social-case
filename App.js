@@ -1,6 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { store } from './app/store'
+import { Provider } from 'react-redux'
 
 import Tabbar from './app/components/Tabbar'
 
@@ -25,10 +27,10 @@ function TabNavigation() {
   );
 }
 
-
 const Stack = createStackNavigator();
 export default function App() {
   return (
+    <Provider store={store}>
     <NavigationContainer>
     <Stack.Navigator tabBar={props => <Tabbar {...props} />}  screenOptions={{ headerShown: false }} initialRouteName="Splash">
       <Stack.Screen name="Splash" component={Splash} options={{  }} />
@@ -37,5 +39,6 @@ export default function App() {
       <Stack.Screen name="Messaging" component={Messaging} options={{  }} />
     </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   );
 }

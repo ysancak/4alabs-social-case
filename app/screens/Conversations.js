@@ -1,28 +1,35 @@
 import { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, Dimensions, Image, KeyboardAvoidingView, SafeAreaView, View, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, StatusBar, TouchableOpacity, Dimensions, Image, KeyboardAvoidingView, SafeAreaView, View, TextInput, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useSelector } from 'react-redux'
 
 import ConversationItem from '../components/ConversationItem';
 
-import { conversationBg, conversations } from '../core';
 import { colors, sizes } from '../utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+const BG = require('../../assets/bg/bg-conversation.png')
+
 export default function Conversations({ navigation }) {
 
-  const [conversationList, setConversationList] = useState(conversations)
+  const conversationState = useSelector((state) => state.conversation)
+
+  const [queryConversationList, setQueryConversationList] = useState(conversationState.conversations)
   const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
-    let list = searchText.trim().length > 0 ? filteredConversation() : conversations;
-    setConversationList(list)
+    let list = searchText.trim().length > 0 ? filteredConversations() : conversationState.conversations;
+    setQueryConversationList(list)
   }, [searchText])
 
-  const filteredConversation = () => {
-    return conversations.filter(conv => conv.user.name.toLowerCase().includes(searchText.trim().toLowerCase()))
+  const filteredConversations = () => {
+    return queryConversationList.filter(conv => conv.user.name.toLowerCase().includes(searchText.trim().toLowerCase()))
+  }
+
+  const navigateConversationDetail = (data) => {
+    navigation.navigate("Messaging", { user: data.user, status: data.status })
   }
 
   return (
@@ -31,7 +38,7 @@ export default function Conversations({ navigation }) {
       <StatusBar style="auto" />
 
       <Image 
-        source={conversationBg} 
+        source={BG} 
         style={styles.bgEffectView} 
       />
 
@@ -59,17 +66,17 @@ export default function Conversations({ navigation }) {
 
       <ScrollView keyboardDismissMode='on-drag' contentContainerStyle={styles.conversationView}>
       {
-        conversationList.map((item, index) => {
+        queryConversationList.map((item, index) => {
           return <ConversationItem 
             key={`conversation-${index}`}
             data={item}
-            onPress={() => navigation.navigate("Messaging")}
+            onPress={() => navigateConversationDetail(item)}
           />
         })
       }
       </ScrollView>
 
-      <TouchableOpacity activeOpacity={0.9} style={styles.createNewButtonView} onPress={() => navigation.navigate("Messaging")}>
+      <TouchableOpacity activeOpacity={0.9} style={styles.createNewButtonView} onPress={() => navigateConversationDetail(item)}>
         <Icon name='send-outline' size={25} color={colors.white} />
       </TouchableOpacity>
 

@@ -1,6 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Animated, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import { colors } from '../utils';
 
 export default function MyTabBar({ state, descriptors, navigation }) {

@@ -1,24 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, ScrollView, StyleSheet, Text, Image, Dimensions, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, StatusBar, ScrollView, StyleSheet, Text, Image, Dimensions, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useSelector } from 'react-redux'
 
 import NewStoryButton from '../components/NewStoryButton';
 import StoryViewButton from '../components/StoryViewCircle';
 import FeedItem from '../components/FeedItem';
 
-import { feeds, stories, homeBg } from '../core';
-import { colors, sizes } from '../utils';
+import { sizes } from '../utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+const BG = require('../../assets/bg/bg-home.png')
+
 export default function Home() {
+
+  const feedState = useSelector((state) => state.feed)
+  const storyState = useSelector((state) => state.story)
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
 
       <Image 
-        source={homeBg} 
+        source={BG} 
         style={styles.bgEffectView} 
       />
 
@@ -36,17 +41,17 @@ export default function Home() {
         <ScrollView horizontal style={styles.storiesView}>
           <NewStoryButton />
           {
-            stories.map((item, index) => {
+            storyState.stories.map((item, index) => {
               return <StoryViewButton 
                 key={`story-${index}`}
-                image={item}
+                data={item}
               />
             })
           }
         </ScrollView>
         
         {
-          feeds.map((item, index) => {
+          feedState.feeds.map((item, index) => {
             return <FeedItem 
               key={`feed-${index}`}
               data={item}
