@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Image, View, StyleSheet, Dimensions } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
-import { colors } from '../utils';
+import { colors } from 'utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;

@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import AvatarView from './AvatarView';
-import { sizes } from '../utils';
+import { sizes } from 'utils';
 
 export default function ConversationItem({ data, onPress }) {
   return (

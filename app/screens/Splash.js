@@ -1,18 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 
-import SnapCarousel from '../components/SnapCarousel';
-import SplashButton from '../components/SplashButton';
+import SnapCarousel from 'components/SnapCarousel';
+import SplashButton from 'components/SplashButton';
 
-import { sizes, strings } from '../utils';
+import { sizes, strings } from 'utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const BG = require('../../assets/bg/bg-splash.png')
+const BG = require('assets/bg/bg-splash.png')
 const GALLERY = [
-  require('../../assets/splash/hero.png'),
-  require('../../assets/splash/hero-2.png')
+  require('assets/splash/hero.png'),
+  require('assets/splash/hero-2.png')
 ]
 
 export default function Splash({ navigation }) {

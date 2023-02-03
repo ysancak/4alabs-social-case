@@ -3,11 +3,11 @@ import { StyleSheet, Text, ScrollView, StatusBar, Image, KeyboardAvoidingView, T
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux'
 
-import AvatarView from '../components/AvatarView';
-import MessageItem from '../components/MessageItem';
+import AvatarView from 'components/AvatarView';
+import MessageItem from 'components/MessageItem';
 
-import { sendMessage } from '../store/messageSlice'
-import { colors, sizes } from '../utils';
+import { sendMessage } from 'store/messageSlice'
+import { colors, sizes } from 'utils';
 
 export default function Messaging({ route, navigation }) {
 

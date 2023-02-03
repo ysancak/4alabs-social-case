@@ -4,17 +4,17 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useSelector } from 'react-redux'
 
-import AvatarView from '../../components/AvatarView';
-import nFormatter from '../../helpers/nFormatter';
+import AvatarView from 'components/AvatarView';
+import nFormatter from 'helpers/nFormatter';
 
-import { sizes } from '../../utils';
+import { sizes } from 'utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const BG = require('../../../assets/bg/bg-profile.png')
+const BG = require('assets/bg/bg-profile.png')
 
-import ProfileTabbar from '../../components/ProfileTabbar';
+import ProfileTabbar from 'components/ProfileTabbar';
 import PhotosScreen from '../Profile/Photos';
 import SavedScreen from '../Profile/Saved';
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native';
 
-import { colors, sizes } from '../utils';
+import { colors, sizes } from 'utils';
 
 export default function MessageItem({ isAuth, message }) {
   return (

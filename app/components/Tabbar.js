@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { colors } from '../utils';
+import { colors } from 'utils';
 
 export default function Tabbar({ state, descriptors, navigation }) {
     return (

@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { colors } from '../utils';
+import { colors } from 'utils';
 
 export default function MyTabBar({ state, descriptors, navigation }) {
     return (

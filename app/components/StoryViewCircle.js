@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { colors } from '../utils';
+import { colors } from 'utils';
 
 export default function StoryViewButton({ data }) {
   return (

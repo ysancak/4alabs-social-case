@@ -3,14 +3,14 @@ import { StyleSheet, Text, StatusBar, TouchableOpacity, Dimensions, Image, Keybo
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux'
 
-import ConversationItem from '../components/ConversationItem';
+import ConversationItem from 'components/ConversationItem';
 
-import { colors, sizes } from '../utils';
+import { colors, sizes } from 'utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const BG = require('../../assets/bg/bg-conversation.png')
+const BG = require('assets/bg/bg-conversation.png')
 
 export default function Conversations({ navigation }) {
 

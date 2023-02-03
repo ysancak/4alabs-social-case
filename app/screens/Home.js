@@ -2,16 +2,16 @@ import { SafeAreaView, StatusBar, ScrollView, StyleSheet, Text, Image, Dimension
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux'
 
-import NewStoryButton from '../components/NewStoryButton';
-import StoryViewButton from '../components/StoryViewCircle';
-import FeedItem from '../components/FeedItem';
+import NewStoryButton from 'components/NewStoryButton';
+import StoryViewButton from 'components/StoryViewCircle';
+import FeedItem from 'components/FeedItem';
 
-import { sizes } from '../utils';
+import { sizes } from 'utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const BG = require('../../assets/bg/bg-home.png')
+const BG = require('assets/bg/bg-home.png')
 
 export default function Home() {
 
