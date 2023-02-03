@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useSelector } from 'react-redux'
 
+import CustomText from 'components/CustomText';
 import AvatarView from 'components/AvatarView';
 import nFormatter from 'helpers/nFormatter';
 
@@ -45,22 +46,22 @@ export default function Profile() {
             size={100}
             url={authState.avatar}
         />
-        <Text style={styles.userNameText}>{authState.name}</Text>
-        <Text style={styles.userNickNameText}>{authState.nickname}</Text>
+        <CustomText size={sizes.h1} font="PoppinsBold" style={styles.userNameText}>{authState.name}</CustomText>
+        <CustomText size={sizes.body} style={styles.userNickNameText}>{authState.nickname}</CustomText>
       </View>
 
       <View style={styles.statsView}>
         <View style={styles.statItemView}>
-          <Text style={styles.statItemTitleText}>Posts</Text>
-          <Text style={styles.statItemValueText}>{nFormatter(authState.stats.posts, 2)}</Text>
+          <CustomText size={sizes.body} style={styles.statItemTitleText}>Posts</CustomText>
+          <CustomText size={sizes.h2} font="PoppinsBold" style={styles.statItemValueText}>{nFormatter(authState.stats.posts, 2)}</CustomText>
         </View>
         <View style={styles.statItemView}>
-          <Text style={styles.statItemTitleText}>Followers</Text>
-          <Text style={styles.statItemValueText}>{nFormatter(authState.stats.followers, 2)}</Text>
+          <CustomText size={sizes.body} style={styles.statItemTitleText}>Followers</CustomText>
+          <CustomText size={sizes.h2} font="PoppinsBold" style={styles.statItemValueText}>{nFormatter(authState.stats.followers, 2)}</CustomText>
         </View>
         <View style={styles.statItemView}>
-          <Text style={styles.statItemTitleText}>Follows</Text>
-          <Text style={styles.statItemValueText}>{nFormatter(authState.stats.follows, 2)}</Text>
+          <CustomText size={sizes.body} style={styles.statItemTitleText}>Follows</CustomText>
+          <CustomText size={sizes.h2} font="PoppinsBold" style={styles.statItemValueText}>{nFormatter(authState.stats.follows, 2)}</CustomText>
         </View>
       </View>
 

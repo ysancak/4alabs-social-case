@@ -51,7 +51,7 @@ export default function Conversations({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.headerTitleText}>Messages</Text>
+      <CustomText size={sizes.h1} font="PoppinsBold" style={styles.headerTitleText}>Messages</CustomText>
 
       <View style={styles.searchView}>
         <Icon name='search-outline' size={25} style={styles.searchIconView} />

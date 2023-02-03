@@ -8,11 +8,12 @@ module.exports = function (api) {
         {
           alias: {
             components: './app/components',
-            assets: './assets',
+            assets: './app/assets',
             screens: './app/screens',
             store: './app/store',
             utils: './app/utils',
-            helpers: './app/helpers'
+            helpers: './app/helpers',
+            fonts: './app/fonts'
           },
         },
       ],

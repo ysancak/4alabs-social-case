@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 
+import CustomText from 'components/CustomText';
 import SnapCarousel from 'components/SnapCarousel';
 import SplashButton from 'components/SplashButton';
 
@@ -27,8 +28,8 @@ export default function Splash({ navigation }) {
       />
 
       <View style={styles.welcomeTextView}>
-        <Text style={styles.welcomeText}>{strings.welcomeTo}</Text>
-        <Text style={styles.appNameText}>{strings.appName}</Text>
+        <CustomText size={sizes.body} style={styles.welcomeText}>{strings.welcomeTo}</CustomText>
+        <CustomText size={sizes.h1} font="PoppinsBold" style={styles.appNameText}>{strings.appName}</CustomText>
       </View>
 
       <View style={styles.galleryView}>

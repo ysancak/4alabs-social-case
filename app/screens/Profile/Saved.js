@@ -1,9 +1,11 @@
 import { StyleSheet, StatusBar, Text, View } from 'react-native';
 
+import CustomText from 'components/CustomText';
+
 export default function Saved() {
   return (
     <View style={styles.container}>
-      <Text>Kaydedilmiş fotoğraf bulunmuyor</Text>
+      <CustomText font="PoppinsRegular">Kaydedilmiş fotoğraf bulunmuyor</CustomText>
       <StatusBar style="auto" />
     </View>
   );

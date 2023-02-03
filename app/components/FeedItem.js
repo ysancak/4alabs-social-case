@@ -3,6 +3,7 @@ import { StyleSheet, Text, Image, ImageBackground, View, TouchableOpacity } from
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import CustomText from 'components/CustomText';
 import nFormatter from 'helpers/nFormatter';
 import { colors, sizes } from 'utils';
 
@@ -14,8 +15,8 @@ export default function FeedItem({ data }) {
             <View style={styles.userInfoView}>
                 <Image source={{ uri: data.user.avatar }} style={styles.userAvatarView} />
                 <View>
-                <Text style={styles.userNameText}>{data.user.name}</Text>
-                <Text style={styles.feedTimeText}>{moment(new Date(data.time) * 1000).fromNow()}</Text>
+                    <CustomText style={styles.userNameText}>{data.user.name}</CustomText>
+                    <CustomText style={styles.feedTimeText}>{moment(new Date(data.time) * 1000).fromNow()}</CustomText>
                 </View>
             </View>
             <View>
@@ -25,15 +26,15 @@ export default function FeedItem({ data }) {
         <View style={styles.statsBarView}>
             <View style={styles.statItemView}>
                 <Icon name='heart-outline' size={25} color={colors.white} />
-                <Text style={styles.statItemText}>{nFormatter(data.stats.like, 1)}</Text>
+                <CustomText style={styles.statItemText}>{nFormatter(data.stats.like, 1)}</CustomText>
             </View>
             <View style={styles.statItemView}>
                 <Icon name='chatbox-outline' size={25} color={colors.white} />
-                <Text style={styles.statItemText}>{nFormatter(data.stats.comment, 1)}</Text>
+                <CustomText style={styles.statItemText}>{nFormatter(data.stats.like, 1)}</CustomText>
             </View>
             <View style={styles.statItemView}>
                 <Icon name='bookmark-outline' size={25} color={colors.white} />
-                <Text style={styles.statItemText}>{nFormatter(data.stats.save, 1)}</Text>
+                <CustomText style={styles.statItemText}>{nFormatter(data.stats.like, 1)}</CustomText>
             </View>
         </View>
     </ImageBackground>

@@ -1,12 +1,13 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
+import CustomText from 'components/CustomText';
 import { colors, sizes } from 'utils';
 
 export default function MessageItem({ isAuth, message }) {
   return (
     <View style={{...styles.container, borderTopLeftRadius: isAuth ? 20 : 0, borderTopRightRadius: isAuth ? 0 : 20, alignSelf: isAuth ? 'flex-end' : 'flex-start' }}>
-        <Text style={styles.messageText}>{message}</Text>
+        <CustomText style={styles.messageText}>{message}</CustomText>
     </View>
   )
 }

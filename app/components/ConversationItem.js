@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
+import CustomText from './CustomText';
 import AvatarView from './AvatarView';
 import { sizes } from 'utils';
 
@@ -13,8 +14,8 @@ export default function ConversationItem({ data, onPress }) {
             url={data.user.avatar}
         />
         <View style={styles.messageView}> 
-            <Text style={styles.userNameText}>{data.user.name}</Text>
-            <Text numberOfLines={2} style={styles.userMessageText}>{data.lastMessage}</Text>
+            <CustomText style={styles.userNameText}>{data.user.name}</CustomText>
+            <CustomText size={sizes.bodySmall} numberOfLines={2} style={styles.userMessageText}>{data.lastMessage}</CustomText>
         </View>
     </View>
     </TouchableOpacity>

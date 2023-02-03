@@ -3,6 +3,7 @@ import { StyleSheet, Text, ScrollView, StatusBar, Image, KeyboardAvoidingView, T
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux'
 
+import CustomText from 'components/CustomText';
 import AvatarView from 'components/AvatarView';
 import MessageItem from 'components/MessageItem';
 
@@ -35,7 +36,7 @@ export default function Messaging({ route, navigation }) {
 
       <View style={styles.headerView}>
         
-        <Image source={require('../../assets/message-band.png')} style={styles.headerImageView} />
+        <Image source={require('assets/message-band.png')} style={styles.headerImageView} />
         
         <View style={styles.innerHeaderView}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -50,8 +51,8 @@ export default function Messaging({ route, navigation }) {
             url={route.params.user.avatar}
           />
           <View style={styles.userInfoTextView}>
-            <Text style={styles.userInfoNameText}>{route.params.user.name}</Text>
-            <Text>{route.params.status}</Text>
+            <CustomText size={sizes.h3} style={styles.userInfoNameText}>{route.params.user.name}</CustomText>
+            <CustomText>{route.params.status}</CustomText>
           </View>
         </View>
 

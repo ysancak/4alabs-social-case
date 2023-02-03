@@ -1,9 +1,11 @@
-import { StyleSheet, StatusBar, Text, View } from 'react-native';
+import { StyleSheet, StatusBar, View } from 'react-native';
+
+import CustomText from 'components/CustomText';
 
 export default function Add() {
   return (
     <View style={styles.container}>
-      <Text>Add</Text>
+      <CustomText font="PoppinsRegular">Add</CustomText>
       <StatusBar style="auto" />
     </View>
   );

@@ -1,9 +1,11 @@
-import { StyleSheet, StatusBar, Text, View } from 'react-native';
+import { StyleSheet, StatusBar, View } from 'react-native';
+
+import CustomText from 'components/CustomText';
 
 export default function Likes() {
   return (
     <View style={styles.container}>
-      <Text>Likes</Text>
+      <CustomText font="PoppinsRegular">Likes</CustomText>
       <StatusBar style="auto" />
     </View>
   );

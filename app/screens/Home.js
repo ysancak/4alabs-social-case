@@ -2,6 +2,7 @@ import { SafeAreaView, StatusBar, ScrollView, StyleSheet, Text, Image, Dimension
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux'
 
+import CustomText from 'components/CustomText';
 import NewStoryButton from 'components/NewStoryButton';
 import StoryViewButton from 'components/StoryViewCircle';
 import FeedItem from 'components/FeedItem';
@@ -28,7 +29,7 @@ export default function Home() {
       />
 
       <View style={styles.headerView}>
-        <Text style={styles.headerTitleText}>Socially</Text>
+        <CustomText size={sizes.body} font="PoppinsBold" style={styles.headerTitleText}>Socially</CustomText>
         <TouchableOpacity>
           <Icon name='notifications' size={25} />
         </TouchableOpacity>
@@ -36,7 +37,7 @@ export default function Home() {
 
       <ScrollView contentContainerStyle={styles.feedContentView}>
         
-        <Text style={styles.feedTitleText}>Feed</Text>
+        <CustomText size={sizes.h1} font="PoppinsBold" style={styles.feedTitleText}>Feed</CustomText>
         
         <ScrollView horizontal style={styles.storiesView}>
           <NewStoryButton />

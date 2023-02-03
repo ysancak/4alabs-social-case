@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import CustomText from './CustomText';
 import { colors } from 'utils';
 
 export default function SplashButton({ text, onPress }) {
@@ -9,7 +10,7 @@ export default function SplashButton({ text, onPress }) {
     <View style={styles.buttonBorderEffectView}>
         <View style={styles.buttonBgEffectView}>
             <TouchableOpacity activeOpacity={0.9} style={styles.buttonTouchableOpacity} onPress={onPress}>
-                <Text>{text}</Text>
+                <CustomText font="PoppinsBold">{text}</CustomText>
                 <Icon name='arrow-forward-outline' size={20} />
             </TouchableOpacity>
         </View>
