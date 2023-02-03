@@ -5,6 +5,7 @@ export const colors = {
     "mainThemeColor": "#E1F6F4",
     "accentStroke": "#25A0B0",
     "lightGray": "#C4C4C4",
+    "lightGray2": "#FAFAFA",
     "pink": "#F5C8C6",
     "accentLines": "#EEF2E2",
     "navigationActiveColor": "#7DB9B3",

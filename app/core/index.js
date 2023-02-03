@@ -68,6 +68,7 @@ export const conversations = [
 ]
 
 export const userProfile = {
+    id: 1,
     name: "Dennis Reynolds",
     nickname: '@johndoe',
     avatar: 'https://i.pravatar.cc/200?img=21',
@@ -100,3 +101,33 @@ export const userPhotos = [
         height: 900
     }
 ]
+
+export const messageDetail = {
+    user: {
+        name: "Charlie Kelly",
+        status: "Online",
+        avatar: 'https://i.pravatar.cc/200?img=48',
+    },
+    messages: [
+        {
+            senderId: 2,
+            message: "we r goin to c the lions",
+            time: 1675350684
+        },
+        {
+            senderId: 2,
+            message: "they are doing a feed thing event at the zoo..",
+            time: 1675350694
+        },
+        {
+            senderId: 1,
+            message: "when?",
+            time: 1675350894
+        },
+        {
+            senderId: 1,
+            message: "see the lions or sea lions? also, is mac there with u??",
+            time: 1675350994
+        }
+    ]
+}
