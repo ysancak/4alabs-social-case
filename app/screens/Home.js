@@ -7,7 +7,7 @@ import NewStoryButton from 'components/NewStoryButton';
 import StoryViewButton from 'components/StoryViewCircle';
 import FeedItem from 'components/FeedItem';
 
-import { sizes } from 'utils';
+import { sizes, strings } from 'utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -29,7 +29,7 @@ export default function Home() {
       />
 
       <View style={styles.headerView}>
-        <CustomText size={sizes.body} font="PoppinsBold" style={styles.headerTitleText}>Socially</CustomText>
+        <CustomText size={sizes.body} font="PoppinsBold" style={styles.headerTitleText}>{strings.appName}</CustomText>
         <TouchableOpacity>
           <Icon name='notifications' size={25} />
         </TouchableOpacity>
@@ -37,7 +37,7 @@ export default function Home() {
 
       <ScrollView contentContainerStyle={styles.feedContentView}>
         
-        <CustomText size={sizes.h1} font="PoppinsBold" style={styles.feedTitleText}>Feed</CustomText>
+        <CustomText size={sizes.h1} font="PoppinsBold" style={styles.feedTitleText}>{strings.feed}</CustomText>
         
         <ScrollView horizontal style={styles.storiesView}>
           <NewStoryButton />

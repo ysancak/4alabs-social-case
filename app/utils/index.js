@@ -28,5 +28,13 @@ export const sizes = {
 export const strings = {
     "appName": "Socially",
     "welcomeTo": "Welcome to",
-    "next": "Next"
+    "next": "Next",
+    "add": "Add",
+    "messages": "Messages",
+    "feed": "Feed",
+    "likes": "Likes",
+    "posts": "Posts",
+    "followers": "Followers",
+    "follows": "Follows",
+    "hasNotPhoto": "Kaydedilmiş fotoğraf bulunmuyor"
 }

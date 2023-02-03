@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 import ConversationItem from 'components/ConversationItem';
 
-import { colors, sizes } from 'utils';
+import { colors, sizes, strings } from 'utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -51,7 +51,7 @@ export default function Conversations({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <CustomText size={sizes.h1} font="PoppinsBold" style={styles.headerTitleText}>Messages</CustomText>
+      <CustomText size={sizes.h1} font="PoppinsBold" style={styles.headerTitleText}>{strings.messages}</CustomText>
 
       <View style={styles.searchView}>
         <Icon name='search-outline' size={25} style={styles.searchIconView} />

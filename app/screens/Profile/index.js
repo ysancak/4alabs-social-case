@@ -8,16 +8,16 @@ import CustomText from 'components/CustomText';
 import AvatarView from 'components/AvatarView';
 import nFormatter from 'helpers/nFormatter';
 
-import { sizes } from 'utils';
+import ProfileTabbar from 'components/ProfileTabbar';
+import PhotosScreen from '../Profile/Photos';
+import SavedScreen from '../Profile/Saved';
+
+import { sizes, strings } from 'utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const BG = require('assets/bg/bg-profile.png')
-
-import ProfileTabbar from 'components/ProfileTabbar';
-import PhotosScreen from '../Profile/Photos';
-import SavedScreen from '../Profile/Saved';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -52,15 +52,15 @@ export default function Profile() {
 
       <View style={styles.statsView}>
         <View style={styles.statItemView}>
-          <CustomText size={sizes.body} style={styles.statItemTitleText}>Posts</CustomText>
+          <CustomText size={sizes.body} style={styles.statItemTitleText}>{strings.posts}</CustomText>
           <CustomText size={sizes.h2} font="PoppinsBold" style={styles.statItemValueText}>{nFormatter(authState.stats.posts, 2)}</CustomText>
         </View>
         <View style={styles.statItemView}>
-          <CustomText size={sizes.body} style={styles.statItemTitleText}>Followers</CustomText>
+          <CustomText size={sizes.body} style={styles.statItemTitleText}>{strings.followers}</CustomText>
           <CustomText size={sizes.h2} font="PoppinsBold" style={styles.statItemValueText}>{nFormatter(authState.stats.followers, 2)}</CustomText>
         </View>
         <View style={styles.statItemView}>
-          <CustomText size={sizes.body} style={styles.statItemTitleText}>Follows</CustomText>
+          <CustomText size={sizes.body} style={styles.statItemTitleText}>{strings.follows}</CustomText>
           <CustomText size={sizes.h2} font="PoppinsBold" style={styles.statItemValueText}>{nFormatter(authState.stats.follows, 2)}</CustomText>
         </View>
       </View>
