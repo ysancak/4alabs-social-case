@@ -1,14 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, TouchableOpacity, Dimensions, Image, Text, View, ImageBackground } from 'react-native';
+import { SafeAreaView, StyleSheet, TouchableOpacity, Dimensions, Animated, Image, Text, View, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import AvatarView from '../components/AvatarView';
-import nFormatter from '../helpers/nFormatter';
+import AvatarView from '../../components/AvatarView';
+import nFormatter from '../../helpers/nFormatter';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import { profileBg, userProfile } from '../core';
-import { colors, sizes } from '../utils';
+import { profileBg, userProfile } from '../../core';
+import { colors, sizes } from '../../utils';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+
+import ProfileTabbar from '../../components/ProfileTabbar';
+import PhotosScreen from '../Profile/Photos';
+import SavedScreen from '../Profile/Saved';
+
+const Tab = createMaterialTopTabNavigator();
 
 export default function Profile() {
   return (
@@ -37,26 +44,25 @@ export default function Profile() {
       </View>
 
       <View style={styles.statsView}>
-
         <View style={styles.statItemView}>
           <Text style={styles.statItemTitleText}>Posts</Text>
           <Text style={styles.statItemValueText}>{nFormatter(userProfile.stats.posts, 2)}</Text>
         </View>
-
         <View style={styles.statItemView}>
           <Text style={styles.statItemTitleText}>Followers</Text>
           <Text style={styles.statItemValueText}>{nFormatter(userProfile.stats.followers, 2)}</Text>
         </View>
-
         <View style={styles.statItemView}>
           <Text style={styles.statItemTitleText}>Follows</Text>
           <Text style={styles.statItemValueText}>{nFormatter(userProfile.stats.follows, 2)}</Text>
         </View>
-
       </View>
 
-      <View style={{ backgroundColor: 'red', height: 20 }}>
-
+      <View style={{ flex: 1 }}>
+        <Tab.Navigator tabBar={props => <ProfileTabbar {...props} />}>
+          <Tab.Screen name="Photos" component={PhotosScreen} />
+          <Tab.Screen name="Saved" component={SavedScreen} />
+        </Tab.Navigator>
       </View>
 
     </SafeAreaView>

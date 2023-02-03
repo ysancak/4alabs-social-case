@@ -77,3 +77,26 @@ export const userProfile = {
         follows: 128
     }
 }
+
+export const userPhotos = [
+    {
+        url: 'https://picsum.photos/id/26/600/600',
+        width: 600,
+        height: 600
+    },
+    {
+        url: 'https://picsum.photos/id/19/600/600',
+        width: 800,
+        height: 600
+    },
+    {
+        url: 'https://picsum.photos/id/36/600/600',
+        width: 600,
+        height: 900
+    },
+    {
+        url: 'https://picsum.photos/id/49/600/600',
+        width: 600,
+        height: 900
+    }
+]
