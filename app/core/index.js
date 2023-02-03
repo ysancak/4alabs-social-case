@@ -1,6 +1,7 @@
 export const splashBg = require('../../assets/bg/bg-splash.png');
 export const homeBg = require('../../assets/bg/bg-home.png');
 export const conversationBg = require('../../assets/bg/bg-conversation.png');
+export const profileBg = require('../../assets/bg/bg-profile.png');
 
 export const splashGallery = [
     require('../../assets/splash/hero.png'),
@@ -56,5 +57,23 @@ export const conversations = [
             avatar: 'https://i.pravatar.cc/200?img=25'
         },
         lastMessage: 'Where can I get some?'
-    }
+    },
+    {
+        user: {
+            name: 'Dennis Reynolds',
+            avatar: 'https://i.pravatar.cc/200?img=36'
+        },
+        lastMessage: 'Where can I get some?'
+    },
 ]
+
+export const userProfile = {
+    name: "Dennis Reynolds",
+    nickname: '@johndoe',
+    avatar: 'https://i.pravatar.cc/200?img=21',
+    stats: {
+        posts: 35,
+        followers: 1552,
+        follows: 128
+    }
+}
