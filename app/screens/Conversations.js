@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
-import { StyleSheet, Text, StatusBar, TouchableOpacity, Dimensions, Image, KeyboardAvoidingView, SafeAreaView, View, TextInput, ScrollView } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { StyleSheet, StatusBar, TouchableOpacity, Dimensions, Image, KeyboardAvoidingView, SafeAreaView, Animated, View, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux'
 
 import ConversationItem from 'components/ConversationItem';
+import CustomText from 'components/CustomText';
 
 import { colors, sizes, strings } from 'utils';
 
@@ -14,8 +15,15 @@ const BG = require('assets/bg/bg-conversation.png')
 
 export default function Conversations({ navigation }) {
 
-  const conversationState = useSelector((state) => state.conversation)
+  const scrollRef = useRef();
+  const scrolling = useRef(new Animated.Value(0)).current;
+  const opacityTitle = scrolling.interpolate({
+    inputRange: [0, 30],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
 
+  const conversationState = useSelector((state) => state.conversation)
   const [queryConversationList, setQueryConversationList] = useState(conversationState.conversations)
   const [searchText, setSearchText] = useState('');
 
@@ -23,6 +31,13 @@ export default function Conversations({ navigation }) {
     let list = searchText.trim().length > 0 ? filteredConversations() : conversationState.conversations;
     setQueryConversationList(list)
   }, [searchText])
+
+  const onInputFocus = () => {
+    scrollRef.current?.scrollTo({
+      y: 85,
+      animated: true,
+    });
+  }
 
   const filteredConversations = () => {
     return queryConversationList.filter(conv => conv.user.name.toLowerCase().includes(searchText.trim().toLowerCase()))
@@ -34,7 +49,7 @@ export default function Conversations({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior='padding'>
       <StatusBar style="auto" />
 
       <Image 
@@ -51,30 +66,56 @@ export default function Conversations({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <CustomText size={sizes.h1} font="PoppinsBold" style={styles.headerTitleText}>{strings.messages}</CustomText>
 
-      <View style={styles.searchView}>
-        <Icon name='search-outline' size={25} style={styles.searchIconView} />
-        <TextInput 
-          style={styles.searchInputTextView} 
-          placeholder="Search for contacts"
-          value={searchText}
-          onChangeText={(text) => setSearchText(text)}
-          clearButtonMode='always'
-        />
-      </View>
+      <Animated.ScrollView 
+        ref={scrollRef}
+        keyboardDismissMode='on-drag' 
+        stickyHeaderIndices={[1]}
+        contentContainerStyle={styles.conversationView}
+        onScroll={Animated.event(
+          [{
+            nativeEvent: {
+              contentOffset: {
+                y: scrolling,
+              },
+            },
+          }],
+          { useNativeDriver: true },
+        )}
+        scrollEventThrottle={16}
+        >
 
-      <ScrollView keyboardDismissMode='on-drag' contentContainerStyle={styles.conversationView}>
-      {
-        queryConversationList.map((item, index) => {
-          return <ConversationItem 
-            key={`conversation-${index}`}
-            data={item}
-            onPress={() => navigateConversationDetail(item)}
-          />
-        })
-      }
-      </ScrollView>
+            <Animated.Text 
+              style={{...styles.headerTitleText, opacity: opacityTitle }}
+            >
+                <CustomText size={sizes.h1} font="PoppinsBold" >{strings.messages}</CustomText>
+            </Animated.Text>
+ 
+            <View style={{ backgroundColor: colors.white }}>
+            <Animated.View style={styles.searchView}>
+              <Icon name='search-outline' size={25} style={styles.searchIconView} />
+              <TextInput 
+                style={styles.searchInputTextView} 
+                placeholder="Search for contacts"
+                value={searchText}
+                onFocus={onInputFocus}
+                onChangeText={(text) => setSearchText(text)}
+                clearButtonMode='always'
+              />
+            </Animated.View>
+            </View>
+
+            {
+              queryConversationList.map((item, index) => {
+                return <ConversationItem 
+                  key={`conversation-${index}`}
+                  data={item}
+                  onPress={() => navigateConversationDetail(item)}
+                />
+              })
+            }
+
+      </Animated.ScrollView>
 
       <TouchableOpacity activeOpacity={0.9} style={styles.createNewButtonView} onPress={() => navigateConversationDetail(item)}>
         <Icon name='send-outline' size={25} color={colors.white} />
@@ -100,7 +141,7 @@ const styles = StyleSheet.create({
     padding: sizes.containerPadding,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   headerTitleText: {
     fontWeight: 'bold',
@@ -116,7 +157,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 0,
-    marginBottom: 20
   },
   searchIconView: {
     position: 'absolute', 
