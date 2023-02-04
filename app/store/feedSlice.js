@@ -5,7 +5,7 @@ const initialState = {
         {
             image: 'https://picsum.photos/id/26/600/600',
             user: {
-                name: 'Dennis Reynolds',
+                name: 'Tamara Carpenter',
                 avatar: 'https://i.pravatar.cc/200?img=68'
             },
             time: 1675350784,
